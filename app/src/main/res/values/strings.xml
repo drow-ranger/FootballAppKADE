@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">FootballApp-KADE</string>
+    <string name="prev_match">Prev Match</string>
+    <string name="next_match">Next Match</string>
+    <string name="lineups">Lineups</string>
+    <string name="goalkeeper">Goalkeeper</string>
+    <string name="midlefield">Midlefield</string>
+    <string name="forward">Forward</string>
+    <string name="subtituties">Subtituties</string>
+    <string name="versus">VS</string>
+    <string name="hometeam">homeTeam</string>
+    <string name="awayteam">awayTeam</string>
+    <string name="goals">Goals</string>
+    <string name="shots">Shots</string>
+    <string name="defense">Defense</string>
+    <string name="teamFavorite">Favourite</string>
+    <string name="teams">Teams</string>
+    <string name="match">Match</string>
+
+    <!--<string-array name="club_name">-->
+    <!--<item>Barcelona FC</item>-->
+    <!--<item>Real Madrid FC</item>-->
+    <!--<item>Bayern Munchen FC</item>-->
+    <!--<item>Manchester City FC</item>-->
+    <!--<item>Manchester United FC</item>-->
+    <!--<item>Chelsea FC</item>-->
+    <!--<item>AC Milan FC</item>-->
+    <!--<item>Arsenal FC</item>-->
+    <!--</string-array>-->
+
+    <!--<string-array name="club_desc">-->
+    <!--<item>Futbol Club Barcelona, known simply as Barcelona and colloquially as Barça, is a professional football club based in Barcelona, Catalonia, Spain.</item>-->
+    <!--<item>Real Madrid Club de Fútbol, umumnya dikenal sebagai Real Madrid, adalah klub sepak bola profesional yang berbasis di Madrid, Spanyol. Didirikan pada tahun 1902 sebagai Madrid Football Club, secara tradisional mengenakan kostum kandang putih.</item>-->
+    <!--<item>Fußball-Club Bayern München e.V., commonly known as FC Bayern München, FCB, Bayern Munich, or FC Bayern, is a German sports club based in Munich, Bavaria.</item>-->
+    <!--<item>Manchester City Football Club, also known simply as City or the Cityzens, is a football club based in east Manchester, England. Founded in 1880 as St. Mark's, it became Ardwick Association Football Club in 1887 and Manchester City in 1894.</item>-->
+    <!--<item>Manchester United Football Club, commonly known as Man. United or simply United, is a professional football club based in Old Trafford, Greater Manchester, England, that competes in the Premier League, the top flight of English football.</item>-->
+    <!--<item>Chelsea Football Club is a professional football club in London, England, that competes in the Premier League. Founded in 1905, the club's home ground since then has been Stamford Bridge.</item>-->
+    <!--<item>Associazione Calcio Milan, sering disebut sebagai A.C. Milan atau hanya Milan, adalah sebuah klub sepak bola Italia yang berbasis di Milan, Lombardia, yang bermain di Serie A. </item>-->
+    <!--<item>Arsenal Football Club is a professional football club based in Islington, London, England, that plays in the Premier League, the top flight of English football.</item>-->
+    <!--</string-array>-->
+
+    <!--<array name="club_emblem">-->
+    <!--<item>@drawable/img_barca</item>-->
+    <!--<item>@drawable/img_madrid</item>-->
+    <!--<item>@drawable/img_bayern</item>-->
+    <!--<item>@drawable/img_city</item>-->
+    <!--<item>@drawable/img_mu</item>-->
+    <!--<item>@drawable/img_chelsea</item>-->
+    <!--<item>@drawable/img_acm</item>-->
+    <!--<item>@drawable/img_arsenal</item>-->
+    <!--</array>-->
+
+    <array name="league">
+        <item>English Premier League</item>
+        <item>English League Championship</item>
+        <item>German Bundesliga</item>
+        <item>Italian Serie A</item>
+        <item>French Ligue 1</item>
+        <item>Spanish La Liga</item>
+    </array>
+</resources>
