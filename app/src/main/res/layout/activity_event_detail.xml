@@ -17,399 +17,652 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/eventDate"
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/strip"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="10dp"/>
 
-            <ImageView
-                android:id="@+id/homeEmblem"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/hometeam"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventDate" />
-
-            <ImageView
-                android:id="@+id/awayEmblem"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/awayteam"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventDate" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/versus"
-                app:layout_constraintBottom_toTopOf="@+id/homeFormation"
-                app:layout_constraintEnd_toStartOf="@+id/awayEmblem"
-                app:layout_constraintStart_toEndOf="@+id/homeEmblem"
-                app:layout_constraintTop_toBottomOf="@+id/eventDate" />
-
-            <TextView
-                android:id="@+id/homeScore"
+            <!-- Home Team -->
+            <LinearLayout
+                android:id="@+id/home_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/date"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="25dp">
 
-            <TextView
-                android:id="@+id/awayScore"
+                <ImageView
+                    android:id="@+id/logo_home"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/team_home"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_alignParentLeft="true"
+                    style="@style/txtclub"/>
+
+                <TextView
+                    android:id="@+id/home_formation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <!-- Score -->
+            <LinearLayout
+                android:id="@+id/score"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@id/date"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="25dp">
 
-            <TextView
-                android:id="@+id/homeTeam"
+                <TextView
+                    android:id="@+id/home_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    style="@style/txtscore"/>
+
+                <TextView
+                    android:id="@+id/tv_vs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:text="@string/vs"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"/>
+
+                <TextView
+                    android:id="@+id/away_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    style="@style/txtscore"/>
+
+            </LinearLayout>
+
+            <!-- Away Team -->
+            <LinearLayout
+                android:id="@+id/away_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/homeEmblem"
-                app:layout_constraintStart_toStartOf="@+id/homeEmblem"
-                app:layout_constraintTop_toBottomOf="@+id/homeEmblem" />
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/date"
+                app:layout_constraintRight_toRightOf="parent"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="25dp">
 
-            <TextView
-                android:id="@+id/awayTeam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/awayEmblem"
-                app:layout_constraintStart_toStartOf="@+id/awayEmblem"
-                app:layout_constraintTop_toBottomOf="@+id/awayEmblem" />
+                <ImageView
+                    android:id="@+id/logo_away"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"/>
 
-            <TextView
-                android:id="@+id/homeFormation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/homeTeam"
-                app:layout_constraintStart_toStartOf="@+id/homeTeam"
-                app:layout_constraintTop_toBottomOf="@+id/homeTeam" />
+                <TextView
+                    android:id="@+id/team_away"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_alignParentLeft="true"
+                    style="@style/txtclub"/>
 
-            <TextView
-                android:id="@+id/awayFormation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/awayTeam"
-                app:layout_constraintStart_toStartOf="@+id/awayTeam"
-                app:layout_constraintTop_toBottomOf="@+id/awayTeam" />
+                <TextView
+                    android:id="@+id/away_formation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
 
             <View
-                android:id="@+id/divider"
-                android:layout_width="0dp"
+                android:id="@+id/line_1"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/homeFormation" />
+                android:background="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="@id/away_team"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
 
-            <TextView
+            <!-- Goals -->
+            <RelativeLayout
                 android:id="@+id/goals"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/goals"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                app:layout_constraintTop_toBottomOf="@id/line_1"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/homeGoals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                <!-- Home Goals -->
+                <TextView
+                    android:id="@+id/home_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:gravity="left"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_goals"/>
 
-            <TextView
-                android:id="@+id/awayGoals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                <TextView
+                    android:id="@+id/tv_goals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/goals"
+                    android:textColor="@color/Goal"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/homeShots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeGoals" />
+                <!-- Away Goals -->
+                <TextView
+                    android:id="@+id/away_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:gravity="right"
+                    android:layout_marginEnd="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_goals"/>
 
-            <TextView
-                android:id="@+id/awayShots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/awayGoals" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
                 android:id="@+id/shots"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/shots"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeGoals" />
+                app:layout_constraintTop_toBottomOf="@id/goals"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
+
+                <!-- Home Shots -->
+                <TextView
+                    android:id="@+id/home_shot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:gravity="left"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_shots"/>
+
+                <TextView
+                    android:id="@+id/tv_shots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/shots"
+                    android:textColor="@color/Shot"
+                    android:textStyle="bold" />
+
+                <!-- Away Shots -->
+                <TextView
+                    android:id="@+id/away_shot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:gravity="right"
+                    android:layout_marginEnd="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_shots"/>
+
+            </RelativeLayout>
 
             <View
-                android:id="@+id/divider2"
-                android:layout_width="0dp"
+                android:id="@+id/line_2"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeShots" />
+                android:background="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/shots"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
 
             <TextView
-                android:id="@+id/lineup"
+                android:id="@+id/tv_lineups"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:text="@string/lineups"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/line_2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_margin="8dp"
+                android:textColor="@color/colorAccent"/>
 
-            <TextView
-                android:id="@+id/Goalkeeper"
-                android:layout_width="wrap_content"
+            <!-- Goalkeeper-->
+            <RelativeLayout
+                android:id="@+id/gk"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/goalkeeper"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lineup" />
+                app:layout_constraintTop_toBottomOf="@id/tv_lineups"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/homeGk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lineup" />
+                <!-- Home GK -->
+                <TextView
+                    android:id="@+id/home_goalkeeper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_gk"
+                    android:gravity="start" />
 
-            <TextView
-                android:id="@+id/awayGk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lineup" />
+                <TextView
+                    android:id="@+id/tv_gk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/goal_keeper"
+                    android:textColor="@color/GK"
+                    style="@style/subtitle" />
 
-            <TextView
-                android:id="@+id/Defense"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/defense"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeGk" />
+                <!-- Away GK -->
+                <TextView
+                    android:id="@+id/away_goalkeeper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginEnd="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_gk"
+                    android:gravity="end"/>
 
-            <TextView
-                android:id="@+id/homeDef"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeGk" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/awayDef"
-                android:layout_width="wrap_content"
+            <!-- Defense -->
+            <RelativeLayout
+                android:id="@+id/df"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/awayGk" />
+                app:layout_constraintTop_toBottomOf="@id/gk"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/midlefield"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/midlefield"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeDef" />
+                <!-- Home Df -->
+                <TextView
+                    android:id="@+id/home_defense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_df"
+                    android:gravity="start" />
 
-            <TextView
-                android:id="@+id/homeMdf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeDef" />
+                <TextView
+                    android:id="@+id/tv_df"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/defense"
+                    android:textColor="@color/Def"
+                    style="@style/subtitle" />
 
-            <TextView
-                android:id="@+id/awayMdf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/awayDef" />
+                <!-- Away DF -->
+                <TextView
+                    android:id="@+id/away_defense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@id/tv_df"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end" />
 
-            <TextView
-                android:id="@+id/forward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/forward"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeMdf" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/homeOfen"
-                android:layout_width="wrap_content"
+            <!-- Midfield -->
+            <RelativeLayout
+                android:id="@+id/mf"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeMdf" />
+                app:layout_constraintTop_toBottomOf="@id/df"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/awayOfen"
-                android:layout_width="wrap_content"
+                <!-- Home Mf -->
+                <TextView
+                    android:id="@+id/home_midlefield"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_mf"
+                    android:gravity="start" />
+
+                <TextView
+                    android:id="@+id/tv_mf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/midfield"
+                    android:textColor="@color/Mid"
+                    style="@style/subtitle" />
+
+                <!-- Away MF -->
+                <TextView
+                    android:id="@+id/away_midlefield"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@id/tv_mf"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end" />
+
+            </RelativeLayout>
+
+            <!-- Forward -->
+            <RelativeLayout
+                android:id="@+id/fw"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/awayMdf" />
+                app:layout_constraintTop_toBottomOf="@id/mf"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
+
+                <!-- Home FW -->
+                <TextView
+                    android:id="@+id/home_forward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_fw"
+                    android:gravity="start" />
+
+                <TextView
+                    android:id="@+id/tv_fw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/forward"
+                    android:textColor="@color/For"
+                    style="@style/subtitle" />
+
+                <!-- Away FW -->
+                <TextView
+                    android:id="@+id/away_forward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@id/tv_fw"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end" />
+
+            </RelativeLayout>
+
 
             <View
-                android:id="@+id/divider3"
-                android:layout_width="0dp"
+                android:id="@+id/line_3"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homeOfen" />
+                android:background="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/fw"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
 
             <TextView
-                android:id="@+id/subtituties"
+                android:id="@+id/tv_subtituties"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:text="@string/subtitutes"
+                android:textColor="@color/Sub"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/line_3"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_margin="8dp"/>
+
+            <!-- Subtitutes -->
+            <RelativeLayout
+                android:id="@+id/subs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_subtituties"
                 android:layout_marginTop="8dp"
-                android:text="@string/subtituties"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
+
+                <!-- Home Sub -->
+                <TextView
+                    android:id="@+id/home_subtituties"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_subs"
+                    android:gravity="start" />
+
+                <TextView
+                    android:id="@+id/tv_subs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    style="@style/subtitle" />
+
+                <!-- Away Sub -->
+                <TextView
+                    android:id="@+id/away_subtituties"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@id/tv_subs"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line_4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/subs"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
 
             <TextView
-                android:id="@+id/homeSubs"
+                android:id="@+id/tv_fouls"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+                android:text="@string/fouls"
+                android:textColor="@color/Fouls"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/line_4"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_margin="8dp"/>
 
-            <TextView
-                android:id="@+id/awaySubs"
-                android:layout_width="wrap_content"
+            <!-- YellowCard -->
+            <RelativeLayout
+                android:id="@+id/ycard"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+                app:layout_constraintTop_toBottomOf="@id/tv_fouls"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
+
+                <!-- Home YCard -->
+                <TextView
+                    android:id="@+id/home_yellowcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_ycard"
+                    android:gravity="start" />
+
+                <TextView
+                    android:id="@+id/tv_ycard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/yellowcard"
+                    android:textColor="@color/YC"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    style="@style/subtitle" />
+
+                <!-- Away YCard -->
+                <TextView
+                    android:id="@+id/away_yellowcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@id/tv_ycard"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end" />
+
+            </RelativeLayout>
+
+            <!-- RedCard -->
+            <RelativeLayout
+                android:id="@+id/rcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ycard"
+                android:layout_marginTop="4dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
+
+                <!-- Home RCard -->
+                <TextView
+                    android:id="@+id/home_redcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/tv_rcard"
+                    android:gravity="start" />
+
+                <TextView
+                    android:id="@+id/tv_rcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/redcard"
+                    android:textColor="@color/RC"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    style="@style/subtitle" />
+
+                <!-- Away RCard -->
+                <TextView
+                    android:id="@+id/away_redcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strip"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@id/tv_rcard"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line_5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/rcard"
+                android:layout_margin="10dp"/>
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

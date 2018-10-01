@@ -28,11 +28,11 @@ class FavoriteEventAdapter(private val context: Context, private val eventFavori
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         fun bindItem(eventFavorite: EventFavorite, listener: (EventFavorite) -> Unit) {
 
-            itemView.matchDate.text = eventFavorite.dateEvent
+            itemView.dateMatch.text = eventFavorite.dateEvent
             itemView.homeTeam.text = eventFavorite.strHomeTeam
-            itemView.scoreHome.text = eventFavorite.intHomeScore
+            itemView.homeScore.text = eventFavorite.intHomeScore
             itemView.awayTeam.text = eventFavorite.strAwayTeam
-            itemView.scoreAway.text = eventFavorite.intAwayScore
+            itemView.awayScore.text = eventFavorite.intAwayScore
             itemView.setOnClickListener {
                 listener(eventFavorite)
             }

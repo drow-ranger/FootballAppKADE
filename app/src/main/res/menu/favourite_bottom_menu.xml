@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_teams"
-        android:icon="@drawable/ic_teams"
+        android:icon="@drawable/team"
         android:title="@string/teams" />
     <item
         android:id="@+id/action_favourites"

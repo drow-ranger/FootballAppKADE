@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.deonico.footballapp_kade.R
+import com.deonico.footballapp_kade.changeFormatDate
 import com.deonico.footballapp_kade.helper.EventDBHelper
 import com.deonico.footballapp_kade.model.Event
 import com.deonico.footballapp_kade.model.EventFavorite
@@ -15,6 +16,7 @@ import com.deonico.footballapp_kade.model.EventTableConstant
 import com.deonico.footballapp_kade.model.Team
 import com.deonico.footballapp_kade.presenter.EventDetailView
 import com.deonico.footballapp_kade.presenter.Presenter
+import com.deonico.footballapp_kade.strToDate
 import kotlinx.android.synthetic.main.activity_event_detail.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.db.classParser
@@ -72,30 +74,34 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, AnkoLogger {
 
     override fun showEventDetail(event: Event) {
         this.event = event
-        eventDate.text = event.dateEvent ?: " "
+        date.text = changeFormatDate(strToDate(event.dateEvent))
 //        HOME
-        homeTeam.text = event.strHomeTeam ?: " "
-        homeScore.text = event.intHomeScore ?: " "
-        homeFormation.text = event.strHomeFormation ?: " "
-        homeGoals.text = parserGoal(event.strHomeGoalDetails ?: " ")
-        homeShots.text = event.intHomeShots?.toString()
-        homeGk.text = parserGoal(event.strHomeLineupGoalkeeper ?: " ")
-        homeDef.text = parser(event.strHomeLineupDefense ?: " ")
-        homeMdf.text = parser(event.strHomeLineupMidfield ?: " ")
-        homeOfen.text = parser(event.strHomeLineupForward ?: " ")
-        homeSubs.text = parser(event.strHomeLineupSubstitutes ?: " ")
+        team_home.text = event.strHomeTeam ?: " "
+        home_score.text = event.intHomeScore ?: " "
+        home_formation.text = event.strHomeFormation ?: " "
+        home_goal.text = parserGoal(event.strHomeGoalDetails ?: " ")
+        home_shot.text = event.intHomeShots?.toString()
+        home_goalkeeper.text = parserGoal(event.strHomeLineupGoalkeeper ?: " ")
+        home_defense.text = parser(event.strHomeLineupDefense ?: " ")
+        home_midlefield.text = parser(event.strHomeLineupMidfield ?: " ")
+        home_forward.text = parser(event.strHomeLineupForward ?: " ")
+        home_subtituties.text = parser(event.strHomeLineupSubstitutes ?: " ")
+        home_yellowcard.text = parser(event.strHomeYellowCards ?: " ")
+        home_redcard.text = parser(event.strHomeRedCards ?: " ")
 
 //        AWAY
-        awayTeam.text = event.strAwayTeam ?: " "
-        awayScore.text = event.intAwayScore ?: " "
-        awayFormation.text = event.strAwayFormation ?: " "
-        awayGoals.text = parserGoal(event.strAwayGoalDetails ?: " ")
-        awayShots.text = event.intAwayShots?.toString()
-        awayGk.text = parserGoal(event.strAwayLineupGoalkeeper ?: " ")
-        awayDef.text = parser(event.strAwayLineupDefense ?: " ")
-        awayMdf.text = parser(event.strAwayLineupMidfield ?: " ")
-        awayOfen.text = parser(event.strAwayLineupForward ?: " ")
-        awaySubs.text = parser(event.strAwayLineupSubstitutes ?: " ")
+        team_away.text = event.strAwayTeam ?: " "
+        away_score.text = event.intAwayScore ?: " "
+        away_formation.text = event.strAwayFormation ?: " "
+        away_goal.text = parserGoal(event.strAwayGoalDetails ?: " ")
+        away_shot.text = event.intAwayShots?.toString()
+        away_goalkeeper.text = parserGoal(event.strAwayLineupGoalkeeper ?: " ")
+        away_defense.text = parser(event.strAwayLineupDefense ?: " ")
+        away_midlefield.text = parser(event.strAwayLineupMidfield ?: " ")
+        away_forward.text = parser(event.strAwayLineupForward ?: " ")
+        away_subtituties.text = parser(event.strAwayLineupSubstitutes ?: " ")
+        away_yellowcard.text = parser(event.strAwayYellowCards ?: " ")
+        away_redcard.text = parser(event.strAwayRedCards ?: " ")
 
 //        TO SHOW GRAB THE TEAM EMBLEM
         presenter.getSepecificTeam(event.strHomeTeam)
@@ -105,9 +111,9 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, AnkoLogger {
 
     override fun showTeamEmblem(team: Team) {
         if (team.teamName.equals(event.strHomeTeam)) {
-            Glide.with(this).load(team.teamBadge).into(homeEmblem)
+            Glide.with(this).load(team.teamBadge).into(logo_home)
         } else if (team.teamName.equals(event.strAwayTeam)) {
-            Glide.with(this).load(team.teamBadge).into(awayEmblem)
+            Glide.with(this).load(team.teamBadge).into(logo_away)
         }
     }
 

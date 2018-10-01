@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_prev"
-        android:icon="@drawable/ic_prev"
+        android:icon="@drawable/prev"
         android:title="@string/prev_match" />
     <item
         android:id="@+id/action_next"
-        android:icon="@drawable/ic_next"
+        android:icon="@drawable/next"
         android:title="@string/next_match" />
     <item
         android:id="@+id/action_favorite_match"

@@ -5,6 +5,33 @@ import com.deonico.footballapp_kade.BuildConfig
 
 object SportDBApi {
 
+    fun getTeamDetail(idTeam: String?): String {
+        return BuildConfig.BASE_URL + "api/v1/json/${BuildConfig.TSDB_API_KEY}" + "/lookupteam.php?id="+idTeam
+    }
+
+    fun getNextMatch(leagueMain: String?): String {
+        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
+                .appendPath("api")
+                .appendPath("v1")
+                .appendPath("json")
+                .appendPath(BuildConfig.TSDB_API_KEY)
+                .appendPath("eventsnextleague.php")
+                .appendQueryParameter("id", leagueMain)
+                .build()
+                .toString()
+    }
+
+    fun getLeagues(): String {
+        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
+                .appendPath("api")
+                .appendPath("v1")
+                .appendPath("json")
+                .appendPath(BuildConfig.TSDB_API_KEY)
+                .appendPath("all_leagues.php")
+                .build()
+                .toString()
+    }
+
     fun getEventDetail(eventId: String?): String {
         return Uri.parse(BuildConfig.BASE_URL).buildUpon()
                 .appendPath("api")

@@ -12,9 +12,11 @@ import android.widget.ArrayAdapter
 import com.deonico.footballapp_kade.R
 import com.deonico.footballapp_kade.activity.TeamDetailActivity
 import com.deonico.footballapp_kade.adapter.TeamAdapter
+import com.deonico.footballapp_kade.model.League
 import com.deonico.footballapp_kade.model.Team
 import com.deonico.footballapp_kade.presenter.Presenter
 import com.deonico.footballapp_kade.presenter.TeamView
+import kotlinx.android.synthetic.main.fragment_teams.*
 import kotlinx.android.synthetic.main.fragment_teams.view.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.intentFor
@@ -84,6 +86,5 @@ class TeamsFragment : Fragment(), TeamView {
         teamList.addAll(teams)
         adapter.notifyDataSetChanged()
     }
-
 
 }

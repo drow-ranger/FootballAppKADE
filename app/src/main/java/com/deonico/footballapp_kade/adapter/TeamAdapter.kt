@@ -10,7 +10,9 @@ import com.deonico.footballapp_kade.R
 import com.deonico.footballapp_kade.model.Team
 import kotlinx.android.synthetic.main.item_club.view.*
 
-class TeamAdapter(private val context: Context, private val teams: List<Team>, private val listener: (Team) -> Unit) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
+class TeamAdapter(private val context: Context,
+                  private val teams: List<Team>,
+                  private val listener: (Team) -> Unit) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(LayoutInflater
             .from(context)

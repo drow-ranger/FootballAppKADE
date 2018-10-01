@@ -23,4 +23,4 @@ data class Team(
         val stadium: String? = null
 ) : Serializable
 
-data class TeamResonse(val teams: List<Team>)
+data class TeamResponse(val teams: List<Team>)
