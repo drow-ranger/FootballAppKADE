@@ -27,8 +27,9 @@ class EventDBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, DatabasePropert
                 EventTableConstant.HOME_TEAM to TEXT,
                 EventTableConstant.HOME_SCORE to TEXT,
                 EventTableConstant.AWAY_TEAM to TEXT,
-                EventTableConstant.AWAY_SCORE to TEXT
-        )
+                EventTableConstant.AWAY_SCORE to TEXT,
+                EventTableConstant.HOME_ID to TEXT,
+                EventTableConstant.AWAY_ID to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

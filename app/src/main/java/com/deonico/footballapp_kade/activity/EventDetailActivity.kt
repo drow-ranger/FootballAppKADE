@@ -179,10 +179,12 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, AnkoLogger {
                         EventTableConstant.HOME_TEAM to event.strHomeTeam,
                         EventTableConstant.HOME_SCORE to homeScore,
                         EventTableConstant.AWAY_TEAM to event.strAwayTeam,
-                        EventTableConstant.AWAY_SCORE to awayScore
+                        EventTableConstant.AWAY_SCORE to awayScore,
+                        EventTableConstant.HOME_ID to event.idHomeTeam,
+                        EventTableConstant.AWAY_ID to event.idAwayTeam
                 )
             }
-            snackbar(swipeRefresh, "added to favorite").show()
+            snackbar(swipeRefresh, "Favorite Berhasil Ditambahkan").show()
         } catch (e: SQLiteConstraintException) {
             snackbar(swipeRefresh, e.localizedMessage).show()
         }
@@ -193,7 +195,7 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, AnkoLogger {
             val use = EventDBHelper.getInstance(this).use {
                 delete(EventTableConstant.TABLE_NAME, "${EventTableConstant.ID_EVENT} = ${event.idEvent}")
             }
-            snackbar(swipeRefresh, "removed from favorite").show()
+            snackbar(swipeRefresh, "Favorite Berhasil Dihapus").show()
         } catch (e: SQLiteConstraintException) {
             snackbar(swipeRefresh, e.localizedMessage).show()
         }

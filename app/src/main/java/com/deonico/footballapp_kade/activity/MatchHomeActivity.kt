@@ -2,8 +2,10 @@ package com.deonico.footballapp_kade.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.deonico.footballapp_kade.R
 import com.deonico.footballapp_kade.fragment.FavoriteMatchFragment
 import com.deonico.footballapp_kade.fragment.NextMatchFragment
@@ -60,5 +62,16 @@ class MatchHomeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Tekan KEMBALI sekali lagi untuk keluar", Toast.LENGTH_SHORT).show()
+
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
 }
