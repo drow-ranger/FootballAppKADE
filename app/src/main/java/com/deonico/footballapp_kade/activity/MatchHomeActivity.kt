@@ -70,8 +70,8 @@ class MatchHomeActivity : AppCompatActivity() {
         }
 
         this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Tekan KEMBALI sekali lagi untuk keluar", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.back, Toast.LENGTH_SHORT).show()
 
-        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 }

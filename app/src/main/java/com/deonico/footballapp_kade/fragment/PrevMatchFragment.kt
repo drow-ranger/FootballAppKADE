@@ -13,14 +13,15 @@ import android.widget.ArrayAdapter
 import com.deonico.footballapp_kade.R
 import com.deonico.footballapp_kade.activity.EventDetailActivity
 import com.deonico.footballapp_kade.adapter.EventAdapter
+import com.deonico.footballapp_kade.api.ApiRepository
 import com.deonico.footballapp_kade.model.Event
 import com.deonico.footballapp_kade.model.League
 import com.deonico.footballapp_kade.presenter.EventView
 import com.deonico.footballapp_kade.presenter.Presenter
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_common_layout.view.*
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.startActivity
-import org.jetbrains.anko.support.v4.toast
 
 class PrevMatchFragment : Fragment(), EventView {
     private lateinit var spinnerAdapeter: ArrayAdapter<String>
@@ -34,7 +35,9 @@ class PrevMatchFragment : Fragment(), EventView {
     private var leagueId = "4328"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        presenter = Presenter(this)
+        val request = ApiRepository()
+        val getData = Gson()
+        presenter = Presenter(this, request, getData)
         super.onCreate(savedInstanceState)
     }
 

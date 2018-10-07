@@ -24,6 +24,9 @@
     <string name="fouls">Fouls</string>
     <string name="yellowcard">Yellowcard</string>
     <string name="redcard">Redcard</string>
+    <string name="remove_favorite">Remove Favorite</string>
+    <string name="add_favorite">Add Favorite</string>
+    <string name="back">Tekan KEMBALI sekali lagi untuk keluar</string>
 
     <array name="league">
         <item>English Premier League</item>
@@ -33,16 +36,6 @@
         <item>Spanish La Liga</item>
         <item>Dutch Eredivisie</item>
         <item>Russian Football Premier League</item>
-    </array>
-
-    <array name="leagueid">
-        <item>4328</item>
-        <item>4331</item>
-        <item>4332</item>
-        <item>4334</item>
-        <item>4335</item>
-        <item>4337</item>
-        <item>4355</item>
     </array>
 
 </resources>

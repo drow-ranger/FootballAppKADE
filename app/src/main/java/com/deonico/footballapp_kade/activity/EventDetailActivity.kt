@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.deonico.footballapp_kade.R
+import com.deonico.footballapp_kade.api.ApiRepository
 import com.deonico.footballapp_kade.changeFormatDate
 import com.deonico.footballapp_kade.helper.EventDBHelper
 import com.deonico.footballapp_kade.model.Event
@@ -17,6 +18,7 @@ import com.deonico.footballapp_kade.model.Team
 import com.deonico.footballapp_kade.presenter.EventDetailView
 import com.deonico.footballapp_kade.presenter.Presenter
 import com.deonico.footballapp_kade.strToDate
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_event_detail.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.db.classParser
@@ -42,7 +44,9 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, AnkoLogger {
         supportActionBar?.title = "Event Detail"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         eventId = intent.getStringExtra("eventId")
-        presenter = Presenter(this)
+        val request = ApiRepository()
+        val getData = Gson()
+        presenter = Presenter(this, request, getData)
         presenter.getEventDetail(eventId)
 
 
@@ -184,7 +188,7 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, AnkoLogger {
                         EventTableConstant.AWAY_ID to event.idAwayTeam
                 )
             }
-            snackbar(swipeRefresh, "Favorite Berhasil Ditambahkan").show()
+            snackbar(swipeRefresh,R.string.add_favorite).show()
         } catch (e: SQLiteConstraintException) {
             snackbar(swipeRefresh, e.localizedMessage).show()
         }
@@ -195,7 +199,7 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, AnkoLogger {
             val use = EventDBHelper.getInstance(this).use {
                 delete(EventTableConstant.TABLE_NAME, "${EventTableConstant.ID_EVENT} = ${event.idEvent}")
             }
-            snackbar(swipeRefresh, "Favorite Berhasil Dihapus").show()
+            snackbar(swipeRefresh,R.string.remove_favorite).show()
         } catch (e: SQLiteConstraintException) {
             snackbar(swipeRefresh, e.localizedMessage).show()
         }

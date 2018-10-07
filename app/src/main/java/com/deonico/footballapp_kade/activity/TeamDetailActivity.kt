@@ -8,12 +8,14 @@ import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.deonico.footballapp_kade.R
+import com.deonico.footballapp_kade.api.ApiRepository
 import com.deonico.footballapp_kade.helper.TeamDBHelper
 import com.deonico.footballapp_kade.model.TeamFavorite
 import com.deonico.footballapp_kade.model.TeamTableConstant
 import com.deonico.footballapp_kade.model.Team
 import com.deonico.footballapp_kade.presenter.Presenter
 import com.deonico.footballapp_kade.presenter.TeamDetailView
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_team_detail.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.db.classParser
@@ -36,7 +38,9 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView, AnkoLogger {
         setContentView(R.layout.activity_team_detail)
         supportActionBar!!.title = "Team Detail"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        presenter = Presenter(this)
+        val request = ApiRepository()
+        val getData = Gson()
+        presenter = Presenter(this, request, getData)
         teamName = intent.getStringExtra("team")
         presenter.getSepecificTeam(teamName)
         swipeRefresh.setColorSchemeResources(
@@ -102,7 +106,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView, AnkoLogger {
                         TeamTableConstant.TEAM_BADGE to team.teamBadge
                 )
             }
-            snackbar(scrollView, "${team.teamName} succesfully added to favorite").show()
+            snackbar(scrollView, R.string.add_favorite).show()
         } catch (e: SQLiteConstraintException) {
             snackbar(scrollView, e.localizedMessage).show()
         }
@@ -113,7 +117,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView, AnkoLogger {
             TeamDBHelper.getInstance(this).use {
                 delete(TeamTableConstant.TABLE_NAME, "${TeamTableConstant.TEAM_ID} = ${team.teamId}")
             }
-            snackbar(scrollView, "${team.teamName} is removed from favorite").show()
+            snackbar(scrollView, R.string.remove_favorite).show()
         } catch (e: SQLiteConstraintException) {
             snackbar(scrollView, e.localizedMessage).show()
         }

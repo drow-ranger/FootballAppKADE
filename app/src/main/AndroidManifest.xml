@@ -13,16 +13,16 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".MainActivity"> -->
-        <activity android:name=".activity.MatchHomeActivity">
+        <activity android:name="com.deonico.footballapp_kade.activity.MatchHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.EventDetailActivity" />
-        <activity android:name=".activity.TeamHomeActivity" />
-        <activity android:name=".activity.TeamDetailActivity"></activity>
+        <activity android:name="com.deonico.footballapp_kade.activity.EventDetailActivity" />
+        <activity android:name="com.deonico.footballapp_kade.activity.TeamHomeActivity" />
+        <activity android:name="com.deonico.footballapp_kade.activity.TeamDetailActivity"></activity>
     </application>
 
 </manifest>

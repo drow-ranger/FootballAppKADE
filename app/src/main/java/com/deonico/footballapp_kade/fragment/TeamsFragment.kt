@@ -12,11 +12,11 @@ import android.widget.ArrayAdapter
 import com.deonico.footballapp_kade.R
 import com.deonico.footballapp_kade.activity.TeamDetailActivity
 import com.deonico.footballapp_kade.adapter.TeamAdapter
-import com.deonico.footballapp_kade.model.League
+import com.deonico.footballapp_kade.api.ApiRepository
 import com.deonico.footballapp_kade.model.Team
 import com.deonico.footballapp_kade.presenter.Presenter
 import com.deonico.footballapp_kade.presenter.TeamView
-import kotlinx.android.synthetic.main.fragment_teams.*
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_teams.view.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.intentFor
@@ -35,7 +35,10 @@ class TeamsFragment : Fragment(), TeamView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         leagueList.addAll(resources.getStringArray(R.array.league))
-        presenter = Presenter(this)
+        //Get data
+        val request = ApiRepository()
+        val getData = Gson()
+        presenter = Presenter(this, request, getData)
         spinnerAdapter = ArrayAdapter(context, R.layout.support_simple_spinner_dropdown_item, leagueList)
         adapter = TeamAdapter(ctx, teamList) {
             ctx.startActivity(intentFor<TeamDetailActivity>("team" to it.teamName))

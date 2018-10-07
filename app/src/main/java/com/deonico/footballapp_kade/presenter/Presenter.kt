@@ -3,30 +3,26 @@ package com.deonico.footballapp_kade.presenter
 import com.google.gson.Gson
 import com.deonico.footballapp_kade.api.ApiRepository
 import com.deonico.footballapp_kade.api.SportDBApi
+import com.deonico.footballapp_kade.helper.CoroutinesContextProvider
 import com.deonico.footballapp_kade.model.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.coroutines.experimental.bg
 
-class Presenter<in T>(private val view: T) {
-    private val repository = ApiRepository()
-    private val gson = Gson()
-    var leagues: MutableList<League> = mutableListOf()
+class Presenter<in T>(private val view: T,
+                      private val repository: ApiRepository,
+                      private val gson: Gson,
+                      private val context: CoroutinesContextProvider = CoroutinesContextProvider()) {
 
-    fun getLeagueList() {
-        if (view is EventView) {
-            doAsync {
-                val data: List<League>? = gson.fromJson(repository.doRequest(SportDBApi.getLeagues()),
-                        LeagueResponse::class.java).leagues
-
-                for (league in data!!.iterator()) {
-                    if (league.type.equals("Soccer")) {
-                        leagues.add(league)
-                    }
+    fun getLeagueList(){
+        if(view is EventView){
+            async(context.main){
+                val data = bg {
+                    gson.fromJson(repository
+                            .doRequest(SportDBApi.getLeagues()),
+                            LeagueResponse::class.java
+                    )
                 }
-
-                uiThread {
-                    data?.let { view.showLeagueList(leagues) }
-                }
+                view.showLeagueList(data.await().leagues)
             }
         }
     }
@@ -34,14 +30,15 @@ class Presenter<in T>(private val view: T) {
     fun getEventDetail(eventId: String?) {
         if (view is EventDetailView) {
             view.showLoading()
-            doAsync {
-                val data: Event? = gson.fromJson(repository.doRequest(SportDBApi.getEventDetail(eventId)),
-                        EventResponse::class.java).events[0]
-
-                uiThread {
-                    view.hideLoading()
-                    data?.let { it1 -> view.showEventDetail(it1) }
+            async(context.main){
+                val data = bg{
+                    gson.fromJson(repository
+                            .doRequest(SportDBApi.getEventDetail(eventId)),
+                            EventResponse::class.java
+                    )
                 }
+                view.showEventDetail(data.await().events[0])
+                view.hideLoading()
             }
         }
     }
@@ -49,14 +46,15 @@ class Presenter<in T>(private val view: T) {
     fun getNextMatch(leagueId: String?) {
         if (view is EventView) {
             view.showLoading()
-            doAsync {
-                val data: List<Event>? = gson.fromJson(repository.doRequest(SportDBApi.getNextMatches(leagueId)),
-                        EventResponse::class.java).events
-
-                uiThread {
-                    view.hideLoading()
-                    data?.let { it1 -> view.showEventList(it1) }
+            async(context.main){
+                val data = bg{
+                    gson.fromJson(repository
+                            .doRequest(SportDBApi.getNextMatches(leagueId)),
+                            EventResponse::class.java
+                    )
                 }
+                view.showEventList(data.await().events)
+                view.hideLoading()
             }
         }
     }
@@ -64,14 +62,15 @@ class Presenter<in T>(private val view: T) {
     fun getPrevMatch(leagueId: String?) {
         if (view is EventView) {
             view.showLoading()
-            doAsync {
-                val data: List<Event>? = gson.fromJson(repository.doRequest(SportDBApi.getPrevMatches(leagueId)),
-                        EventResponse::class.java).events
-
-                uiThread {
-                    view.hideLoading()
-                    data?.let { it1 -> view.showEventList(it1) }
+            async(context.main){
+                val data = bg{
+                    gson.fromJson(repository
+                            .doRequest(SportDBApi.getPrevMatches(leagueId)),
+                            EventResponse::class.java
+                    )
                 }
+                view.showEventList(data.await().events)
+                view.hideLoading()
             }
         }
     }
@@ -79,15 +78,16 @@ class Presenter<in T>(private val view: T) {
     fun getTeamList(league: String?) {
         if (view is TeamView) {
             view.showLoading()
-            doAsync {
-                val data: List<Team>? = gson.fromJson(repository.doRequest(SportDBApi.getTeams(league)),
-                        TeamResponse::class.java
-                ).teams
 
-                uiThread {
-                    view.hideLoading()
-                    data?.let { it1 -> view.showTeamList(it1) }
+            async(context.main){
+                val data = bg {
+                    gson.fromJson(repository
+                            .doRequest(SportDBApi.getTeams(league)),
+                            TeamResponse::class.java
+                    )
                 }
+                view.showTeamList(data.await().teams)
+                view.hideLoading()
             }
         }
     }
@@ -95,28 +95,28 @@ class Presenter<in T>(private val view: T) {
     fun getSepecificTeam(teamName: String?) {
         if (view is TeamDetailView) {
             view.showLoading()
-            doAsync {
-                val data: Team? = gson.fromJson(repository.doRequest(SportDBApi.getSpecificTeam(teamName)),
-                        TeamResponse::class.java).teams[0]
-
-                uiThread {
-                    view.hideLoading()
-                    data?.let { it1 -> view.showTeamDetail(it1) }
-
+            async(context.main){
+                val data = bg{
+                    gson.fromJson(repository
+                            .doRequest(SportDBApi.getSpecificTeam(teamName)),
+                            TeamResponse::class.java
+                    )
                 }
+                view.showTeamDetail(data.await().teams[0])
+                view.hideLoading()
             }
         }
         if (view is EventDetailView) {
             view.showLoading()
-            doAsync {
-                val data: Team? = gson.fromJson(repository.doRequest(SportDBApi.getSpecificTeam(teamName)),
-                        TeamResponse::class.java).teams[0]
-
-                uiThread {
-                    view.hideLoading()
-                    data?.let { it1 -> view.showTeamEmblem(it1) }
-
+            async(context.main){
+                val data = bg{
+                    gson.fromJson(repository
+                            .doRequest(SportDBApi.getSpecificTeam(teamName)),
+                            TeamResponse::class.java
+                    )
                 }
+                view.showTeamEmblem(data.await().teams[0])
+                view.hideLoading()
             }
         }
 
